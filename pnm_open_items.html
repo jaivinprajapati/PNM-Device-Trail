@@ -180,8 +180,8 @@
 
   <!-- Tab bar -->
   <div class="tab-bar">
-    <div class="tab" onclick="switchTab('process')">Process</div>
-    <div class="tab active" onclick="switchTab('questions')">Open Items</div>
+    <div class="tab active" onclick="switchTab('process')">Process</div>
+    <div class="tab" onclick="switchTab('questions')">Open Items</div>
     <div class="tab" onclick="switchTab('csp-faq')">CSP FAQs</div>
     <div class="tab-hint">3 tabs &nbsp;·&nbsp; Start with <strong>Open Items</strong> for context, <strong>Process</strong> for the ideal flow, <strong>CSP FAQs</strong> for partner-facing questions</div>
   </div>
@@ -189,7 +189,7 @@
   <!-- ══════════════════════════════════════════ -->
   <!-- TAB 1: Open Items                         -->
   <!-- ══════════════════════════════════════════ -->
-  <div id="tab-questions" class="tab-content active">
+  <div id="tab-questions" class="tab-content">
     <div class="page-header" style="padding:32px 0 0;">
       <h1>PNM Device Trail</h1>
       <p class="subtitle">Open items &amp; path forward &nbsp;·&nbsp; as of Apr 2026</p>
@@ -412,7 +412,7 @@
   <!-- ══════════════════════════════════════════ -->
   <!-- TAB 2: Process                            -->
   <!-- ══════════════════════════════════════════ -->
-  <div id="tab-process" class="tab-content">
+  <div id="tab-process" class="tab-content active">
     <div style="padding:0 0 20px 0;">
       <h1 style="font-size:22px;font-weight:700;margin-bottom:4px;">PNM Device — End-to-End Process</h1>
       <p style="font-size:13px;color:#888;">Ideal process &nbsp;·&nbsp; as of Apr 2026</p>
@@ -469,13 +469,8 @@
         <div style="display:flex;flex-direction:column;gap:8px;">
 
           <div style="background:#fef2f2;border-radius:7px;padding:12px 14px;border-left:3px solid #ef4444;">
-            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#b91c1c;margin-bottom:4px;">Critical gap — decision needed</div>
-            <div style="font-size:12.5px;color:#1a1a1a;line-height:1.5;">No backend way to confirm partner↔device mapping. Nikhil also relies on Shariq's sheet.</div>
-            <div style="margin-top:8px;font-size:12px;color:#555;line-height:1.6;">
-              <div style="margin-bottom:4px;"><strong style="color:#15803d;">Option A:</strong> Partner confirms receipt via app/SMS. Works for custody trail but residual risk remains — device may sit at wrong partner, health monitored for incorrect one.</div>
-              <div style="margin-bottom:4px;"><strong style="color:#92400e;">Option C:</strong> Lat-long capture at install. Adds ~30 min/device — PNM skips conventional install steps. Time cost per Wiom agent must be decided.</div>
-              <div><strong style="color:#b91c1c;">Option B:</strong> Ruled out — agent entering partner ID is the same circular problem.</div>
-            </div>
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#b91c1c;margin-bottom:4px;">Critical gap — SOP needed</div>
+            <div style="font-size:12.5px;color:#1a1a1a;line-height:1.5;">No backend way to confirm partner↔device mapping. Nikhil also relies on Shariq's sheet. A wrong mapping means health is monitored for the incorrect partner.</div>
           </div>
 
           <div style="background:#fff;border-radius:7px;padding:12px 14px;border-left:3px solid #f59e0b;">
@@ -583,16 +578,10 @@
     ✓ Device pinging online
     ❓ Partner↔Device mapping confirmed?"]
 
-    K --> KQ["⚠ Partner↔Device mapping not backend-verified.
-    Nikhil's team also relies on Shariq's sheet.
-    Option A: Partner confirms receipt via app/SMS
-    → good for custody trail, but device may still
-    sit at wrong partner — health monitored for
-    incorrect partner remains a residual risk.
-    Option C: Lat-long at install adds ~30 min/device
-    since PNM skips conventional install steps.
-    Time cost must be weighed — decision needed.
-    Option B: Ruled out — same circular problem."]
+    K --> KQ["⚠ Gap: No backend way to confirm partner↔device
+    mapping. Nikhil's team also relies on Shariq's
+    sheet. A wrong mapping means health is being
+    monitored for the incorrect partner. SOP needed."]
 
     K -.-> DB_K["SSOT: state = idle, pnm_partner_id confirmed
     PNM DB: verified_at, is_verified = true"]
