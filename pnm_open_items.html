@@ -527,7 +527,13 @@
     via PNM flag"]
 
     B -.-> DB_B["SSOT: state = in_transit
-    device_type = PNM"]
+    device_type = PNM
+    dispatched_at ← timer starts here"]
+
+    B --> TIMER["⏱ 7-day timer starts at dispatch
+    5 days transit + 2 days installation
+    If installation not verified within 7 days →
+    Alert to Jaivin + Shariq"]
 
     B --> C["Wiom Hub — PNM Devices tab
     List of all dispatched PNM devices"]
@@ -552,8 +558,19 @@
 
     F -.-> DB_F["PNM DB: agent_id, assigned_at"]
 
-    F --> G["Agent receives device
-    from City Head"]
+    F --> F2["City Head confirms handover
+    to Agent — per device ID
+    (bulk select available)"]
+
+    F2 -.-> DB_F2["PNM DB: city_head_handover_at
+    handover_confirmed_device_ids[]"]
+
+    F2 --> G["Agent acknowledges receipt
+    from City Head — per device ID
+    (bulk select available)"]
+
+    G -.-> DB_G["PNM DB: agent_acknowledged_at
+    agent_received_device_ids[]"]
 
     G --> H["Device enters PNM DB →
     NAS ID auto-generated
@@ -629,6 +646,11 @@
     further process TBD"]
 
     style NOTE1 fill:#f0f9ff,color:#0369a1,stroke:#7dd3fc
+    style TIMER fill:#fef9c3,color:#854d0e,stroke:#fde047
+    style F2    fill:#1a1a1a,color:#ffffff,stroke:#1a1a1a
+    style G     fill:#1a1a1a,color:#ffffff,stroke:#1a1a1a
+    style DB_F2 fill:#ede9fe,color:#4c1d95,stroke:#c4b5fd
+    style DB_G  fill:#ede9fe,color:#4c1d95,stroke:#c4b5fd
     style A    fill:#fef9c3,color:#854d0e,stroke:#fde047
     style A1   fill:#1a1a1a,color:#ffffff,stroke:#1a1a1a
     style A2   fill:#1a1a1a,color:#ffffff,stroke:#1a1a1a
