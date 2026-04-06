@@ -417,46 +417,85 @@
       <p class="subtitle">Ideal process &nbsp;·&nbsp; as of Apr 2026</p>
     </div>
 
-    <div style="display:flex; gap:20px; align-items:flex-start;">
+    <div style="display:flex; gap:16px; align-items:flex-start;">
 
-      <div id="mermaid-diagram" style="background:#fff; border-radius:8px; padding:24px; overflow-x:auto; flex:1;"></div>
+      <!-- LEFT: Ownership table -->
+      <div style="width:220px; flex-shrink:0;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:10px;">Device Ownership</div>
+        <table style="width:100%;border-collapse:collapse;background:#fff;border-radius:8px;overflow:hidden;font-size:13px;">
+          <thead>
+            <tr style="background:#1a1a1a;color:#fff;">
+              <th style="padding:9px 12px;text-align:left;font-size:11px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;">Stage</th>
+              <th style="padding:9px 12px;text-align:left;font-size:11px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;">Owner</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid #f3f4f6;">
+              <td style="padding:9px 12px;color:#555;">Ordering</td>
+              <td style="padding:9px 12px;font-weight:600;color:#1a1a1a;">Shariq</td>
+            </tr>
+            <tr style="border-bottom:1px solid #f3f4f6;background:#fafafa;">
+              <td style="padding:9px 12px;color:#555;">Warehouse</td>
+              <td style="padding:9px 12px;font-weight:600;color:#1a1a1a;">Warehouse Team</td>
+            </tr>
+            <tr style="border-bottom:1px solid #f3f4f6;">
+              <td style="padding:9px 12px;color:#555;">In Transit</td>
+              <td style="padding:9px 12px;font-weight:600;color:#1a1a1a;">Wiom</td>
+            </tr>
+            <tr style="border-bottom:1px solid #f3f4f6;background:#fafafa;">
+              <td style="padding:9px 12px;color:#555;">City Head</td>
+              <td style="padding:9px 12px;font-weight:600;color:#1a1a1a;">City Head</td>
+            </tr>
+            <tr style="border-bottom:1px solid #f3f4f6;">
+              <td style="padding:9px 12px;color:#555;">With Agent</td>
+              <td style="padding:9px 12px;font-weight:600;color:#1a1a1a;">Agent / City Head</td>
+            </tr>
+            <tr>
+              <td style="padding:9px 12px;color:#555;">At CSP</td>
+              <td style="padding:9px 12px;font-weight:600;color:#166534;">Agent + CSP</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="margin-top:8px;font-size:11px;color:#aaa;line-height:1.5;">Wiom retains full financial ownership throughout.</div>
+      </div>
 
-      <div style="width:260px; flex-shrink:0;">
-        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:12px;">Device Ownership</div>
-        <div style="display:flex;flex-direction:column;gap:2px;">
+      <!-- CENTRE: Process flow -->
+      <div id="mermaid-diagram" style="background:#fff; border-radius:8px; padding:20px; overflow-x:auto; flex:1;"></div>
 
-          <div style="background:#fff;border-radius:6px 6px 0 0;padding:10px 14px;border-left:4px solid #1a1a1a;">
-            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#888;margin-bottom:2px;">Ordering</div>
-            <div style="font-size:13px;font-weight:600;color:#1a1a1a;">Shariq</div>
+      <!-- RIGHT: Critical questions -->
+      <div style="width:220px; flex-shrink:0;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:10px;">Critical Open Questions</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+
+          <div style="background:#fff;border-radius:7px;padding:12px 14px;border-left:3px solid #f59e0b;">
+            <div style="font-size:12.5px;color:#1a1a1a;line-height:1.5;">How do we ensure device → partner mapping beyond Shariq's manual input?</div>
           </div>
 
-          <div style="background:#fff;padding:10px 14px;border-left:4px solid #374151;">
-            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#888;margin-bottom:2px;">Packing / Warehouse</div>
-            <div style="font-size:13px;font-weight:600;color:#1a1a1a;">Warehouse Team</div>
+          <div style="background:#fff;border-radius:7px;padding:12px 14px;border-left:3px solid #f59e0b;">
+            <div style="font-size:12.5px;color:#1a1a1a;line-height:1.5;">How do we verify the device is correctly deployed and actually working at the partner location?</div>
           </div>
 
-          <div style="background:#fff;padding:10px 14px;border-left:4px solid #374151;">
-            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#888;margin-bottom:2px;">In Transit</div>
-            <div style="font-size:13px;font-weight:600;color:#1a1a1a;">Wiom</div>
+          <div style="background:#fff;border-radius:7px;padding:12px 14px;border-left:3px solid #f59e0b;">
+            <div style="font-size:12.5px;color:#1a1a1a;line-height:1.5;">How are PNM devices identified separately from regular devices in the system?</div>
           </div>
 
-          <div style="background:#fff;padding:10px 14px;border-left:4px solid #374151;">
-            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#888;margin-bottom:2px;">At City Head Location</div>
-            <div style="font-size:13px;font-weight:600;color:#1a1a1a;">City Head</div>
+          <div style="background:#fff;border-radius:7px;padding:12px 14px;border-left:3px solid #f59e0b;">
+            <div style="font-size:12.5px;color:#1a1a1a;line-height:1.5;">Can a returned PNM device be reused as a normal customer device?</div>
           </div>
 
-          <div style="background:#fff;padding:10px 14px;border-left:4px solid #374151;">
-            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#888;margin-bottom:2px;">With Agent</div>
-            <div style="font-size:13px;font-weight:600;color:#1a1a1a;">Agent / City Head</div>
+          <div style="background:#fff;border-radius:7px;padding:12px 14px;border-left:3px solid #ef4444;">
+            <div style="font-size:12.5px;color:#1a1a1a;line-height:1.5;">What happens if a device is permanently lost and cannot be recovered?</div>
           </div>
 
-          <div style="background:#fff;border-radius:0 0 6px 6px;padding:10px 14px;border-left:4px solid #166534;">
-            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#888;margin-bottom:2px;">Deployed at CSP</div>
-            <div style="font-size:13px;font-weight:600;color:#1a1a1a;">Agent + CSP</div>
+          <div style="background:#fff;border-radius:7px;padding:12px 14px;border-left:3px solid #f59e0b;">
+            <div style="font-size:12.5px;color:#1a1a1a;line-height:1.5;">Does router data partner ID match Shariq + City Head's assignment mapping? (Nikhil to confirm)</div>
+          </div>
+
+          <div style="background:#fff;border-radius:7px;padding:12px 14px;border-left:3px solid #f59e0b;">
+            <div style="font-size:12.5px;color:#1a1a1a;line-height:1.5;">What is the exact recharge + refund process for the CSP's 1-year validity?</div>
           </div>
 
         </div>
-        <div style="margin-top:10px;font-size:11.5px;color:#aaa;line-height:1.5;">Wiom retains full financial ownership throughout. This table reflects operational responsibility at each stage.</div>
       </div>
 
     </div>
@@ -466,7 +505,7 @@
       mermaid.initialize({ startOnLoad: false, theme: 'base', themeVariables: {
         primaryColor: '#1a1a1a', primaryTextColor: '#1a1a1a', primaryBorderColor: '#1a1a1a',
         lineColor: '#9ca3af', secondaryColor: '#f3f4f6', tertiaryColor: '#f9fafb',
-        edgeLabelBackground: '#ffffff', fontSize: '13px', fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif'
+        edgeLabelBackground: '#ffffff', fontSize: '15px', fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif'
       }});
 
       const diagram = `flowchart TD
