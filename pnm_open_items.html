@@ -226,12 +226,12 @@
           <span class="badge badge-assumed">Assumed</span>
         </div>
 
-        <div class="q-row">
+        <div class="q-row resolved">
           <div class="q-content">
             <div class="q-question">How is a PNM device identified in the system?</div>
-            <div class="q-answer">Currently by naming convention only (PNM001…) — convention, not a constraint. Decision needed: add an explicit flag in SSOT (e.g. <code>device_type = 'PNM'</code>) so all system logic — installation guard, loss process, partner assignment — checks a reliable identifier, not a naming pattern.</div>
+            <div class="q-answer">Via SKU Code. When an order is placed, the warehouse selects SKU Code <code>PNM-01</code> for PNM devices. SKU is mapped at order ID level in <code>t_inventory_request</code>. Since device ID contains the order ID, the chain is: <code>device_id → order_id → t_inventory_request → SKU = PNM-01</code>. No separate flag needed — identification is derivable from existing data.</div>
           </div>
-          <span class="badge badge-open">Open</span>
+          <span class="badge badge-sorted">Sorted</span>
         </div>
 
         <div class="q-row">
@@ -293,14 +293,15 @@
         <div class="open-card">
           <div class="open-card-header">
             <div class="open-card-title">PNM identity format in SSOT</div>
-            <span class="badge badge-open">Open</span>
+            <span class="badge badge-sorted">Sorted</span>
           </div>
           <div class="open-card-body">
-            Confirm: naming pattern (PNM001…) as the natural source + explicit <code>device_type</code> flag in SSOT as the enforced identity. Flag must be set at NAS ID creation (Asif step) — not patched in later. All downstream logic (installation guard, loss process, partner assignment) must check the flag.
+            <strong>Finding:</strong> PNM devices are identifiable via SKU Code <code>PNM-01</code>. When an order is placed, warehouse selects this SKU. It is mapped at order ID level in <code>t_inventory_request</code>. Since device ID contains the order ID, the full chain is:
             <br/><br/>
-            Align with Rahul (SSOT schema) and Asif (flag at creation time).
+            <code>device_id → order_id → t_inventory_request → SKU_code = PNM-01</code>
+            <br/><br/>
+            No separate SSOT flag or naming convention dependency needed — identification is derivable from existing data. All system logic (installation guard, loss process, partner assignment) can check this chain.
           </div>
-          <div class="owner">Owner: <span>Jaivin → Rahul + Asif</span></div>
         </div>
 
         <div class="open-card">
@@ -368,8 +369,8 @@
         <div class="seq-item">
           <div class="seq-left"><div class="seq-num">2</div><div class="seq-line"></div></div>
           <div class="seq-content">
-            <div class="seq-title">Decide PNM identity format</div>
-            <div class="seq-desc">Confirm naming pattern + explicit SSOT flag. Align with Rahul and Asif on when and how the flag gets set.</div>
+            <div class="seq-title">PNM identity format — resolved</div>
+            <div class="seq-desc">SKU Code PNM-01 in t_inventory_request. Chain: device_id → order_id → SKU = PNM-01. No separate flag needed.</div>
           </div>
         </div>
 
@@ -473,8 +474,9 @@
             <div style="font-size:12.5px;color:#1a1a1a;line-height:1.5;">No backend way to confirm partner↔device mapping. Nikhil also relies on Shariq's sheet. A wrong mapping means: (1) Wiom loses track of where their devices actually are, and (2) internet health is monitored for the wrong partner.</div>
           </div>
 
-          <div style="background:#fff;border-radius:7px;padding:12px 14px;border-left:3px solid #f59e0b;">
-            <div style="font-size:12.5px;color:#1a1a1a;line-height:1.5;">How are PNM devices identified separately from regular devices in the system?</div>
+          <div style="background:#f0fdf4;border-radius:7px;padding:12px 14px;border-left:3px solid #86efac;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#15803d;margin-bottom:4px;">Resolved</div>
+            <div style="font-size:12.5px;color:#555;line-height:1.5;">How are PNM devices identified separately? — SKU Code <code>PNM-01</code> in <code>t_inventory_request</code>. Chain: device_id → order_id → SKU = PNM-01.</div>
           </div>
 
           <div style="background:#fff;border-radius:7px;padding:12px 14px;border-left:3px solid #f59e0b;">
