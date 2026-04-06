@@ -417,7 +417,49 @@
       <p class="subtitle">Ideal process &nbsp;·&nbsp; as of Apr 2026</p>
     </div>
 
-    <div id="mermaid-diagram" style="background:#fff; border-radius:8px; padding:24px; overflow-x:auto;"></div>
+    <div style="display:flex; gap:20px; align-items:flex-start;">
+
+      <div id="mermaid-diagram" style="background:#fff; border-radius:8px; padding:24px; overflow-x:auto; flex:1;"></div>
+
+      <div style="width:260px; flex-shrink:0;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:12px;">Device Ownership</div>
+        <div style="display:flex;flex-direction:column;gap:2px;">
+
+          <div style="background:#fff;border-radius:6px 6px 0 0;padding:10px 14px;border-left:4px solid #1a1a1a;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#888;margin-bottom:2px;">Ordering</div>
+            <div style="font-size:13px;font-weight:600;color:#1a1a1a;">Shariq</div>
+          </div>
+
+          <div style="background:#fff;padding:10px 14px;border-left:4px solid #374151;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#888;margin-bottom:2px;">Packing / Warehouse</div>
+            <div style="font-size:13px;font-weight:600;color:#1a1a1a;">Warehouse Team</div>
+          </div>
+
+          <div style="background:#fff;padding:10px 14px;border-left:4px solid #374151;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#888;margin-bottom:2px;">In Transit</div>
+            <div style="font-size:13px;font-weight:600;color:#1a1a1a;">Wiom</div>
+          </div>
+
+          <div style="background:#fff;padding:10px 14px;border-left:4px solid #374151;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#888;margin-bottom:2px;">At City Head Location</div>
+            <div style="font-size:13px;font-weight:600;color:#1a1a1a;">City Head</div>
+          </div>
+
+          <div style="background:#fff;padding:10px 14px;border-left:4px solid #374151;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#888;margin-bottom:2px;">With Agent</div>
+            <div style="font-size:13px;font-weight:600;color:#1a1a1a;">Agent / City Head</div>
+          </div>
+
+          <div style="background:#fff;border-radius:0 0 6px 6px;padding:10px 14px;border-left:4px solid #166534;">
+            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#888;margin-bottom:2px;">Deployed at CSP</div>
+            <div style="font-size:13px;font-weight:600;color:#1a1a1a;">Agent + CSP</div>
+          </div>
+
+        </div>
+        <div style="margin-top:10px;font-size:11.5px;color:#aaa;line-height:1.5;">Wiom retains full financial ownership throughout. This table reflects operational responsibility at each stage.</div>
+      </div>
+
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
     <script>
@@ -500,8 +542,13 @@
     IQ --> J{"Backend: device online?"}
 
     J -->|"Yes"| K["Installation verified ✓
-    state: idle — partner ID confirmed
+    state: idle
     Nikhil monitors health"]
+
+    K --> KQ["❓ Confirm with Nikhil — does partner ID
+    from router data match Shariq + City Head's
+    mapping? Critical to confirm Wiom knows
+    exactly which partner has this device"]
 
     K -.-> DB_K["SSOT: state = idle, pnm_partner_id confirmed
     PNM DB: verified_at, is_verified = true"]
@@ -511,7 +558,7 @@
 
     L --> I
 
-    K --> M(["Device sits at partner office
+    KQ --> M(["Device sits at partner office
     No action required"])
 
     M --> N{"Any activity attempted
@@ -552,6 +599,7 @@
     style A1   fill:#1a1a1a,color:#ffffff,stroke:#1a1a1a
     style A2   fill:#1a1a1a,color:#ffffff,stroke:#1a1a1a
     style IQ   fill:#fef9c3,color:#854d0e,stroke:#fde047
+    style KQ   fill:#fef9c3,color:#854d0e,stroke:#fde047
     style B    fill:#1a1a1a,color:#ffffff,stroke:#1a1a1a
     style C    fill:#1a1a1a,color:#ffffff,stroke:#1a1a1a
     style D    fill:#1a1a1a,color:#ffffff,stroke:#1a1a1a
